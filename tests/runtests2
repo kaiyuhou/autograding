@@ -1,0 +1,4 @@
+#!/bin/bash
+base=/home/awp066/os-343-Fabian/ta/autograding/tests/1-2
+python $base/proj2.py --test-path $base $@ | tee runtests.log
+exit $?
