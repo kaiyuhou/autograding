@@ -17,7 +17,7 @@ class deref_0x1000(Xv6Test):
                  "Child process should survive and exit normally."
   tester = "ctests/proj2/" + name + ".c"
   make_qemu_args = "CPUS=1"
-  point_value = 5
+  point_value = 10
   timeout = 10
 
 class alloc_155_pages(Xv6Test):
@@ -25,7 +25,7 @@ class alloc_155_pages(Xv6Test):
   description = "Part 1: Attempt to allocate up to the top of userspace (below shared memory)."
   tester = "ctests/proj2/" + name + ".c"
   make_qemu_args = "CPUS=1"
-  point_value = 5
+  point_value = 10
   timeout = 15
 
 class whenTryingToAllocateAboveUsertop_sbrkShouldFail(Xv6Test):
@@ -34,7 +34,7 @@ class whenTryingToAllocateAboveUsertop_sbrkShouldFail(Xv6Test):
                 "Then try to allocate 6 more pages, which would blow through USERTOP.  sbrk should return -1."
   tester = "ctests/proj2/" + name + ".c"
   make_qemu_args = "CPUS=1"
-  point_value = 5
+  point_value = 10
   timeout = 10
 
 class whenTryingToReallocateAPageNearUsertop_sbrkShouldSucceed(Xv6Test):
@@ -43,12 +43,38 @@ class whenTryingToReallocateAPageNearUsertop_sbrkShouldSucceed(Xv6Test):
                 "Then deallocate one page and reallocate one page.  Make sure both calls to sbrk succeed."
   tester = "ctests/proj2/" + name + ".c"
   make_qemu_args = "CPUS=1"
-  point_value = 5
+  point_value = 10
+  timeout = 10
+
+#Part 2
+class forkLargeMemTest(Xv6Test):
+  name = "forkLargeMemTest"
+  description = "Part 2: Test the stability when forking a large bunch of memory."
+  tester = "ctests/proj2/" + name + ".c"
+  make_qemu_args = "CPUS=1"
+  point_value = 10
+  timeout = 10
+
+class forkCowTest(Xv6Test):
+  name = "forkCowTest"
+  description = "Part 2: Test cpy-on-write folk."
+  tester = "ctests/proj2/" + name + ".c"
+  make_qemu_args = "CPUS=1"
+  point_value = 10
+  timeout = 10
+
+class forkCowTest2(Xv6Test):
+  name = "forkCowTest2"
+  description = "Part 2: Test cpy-on-write folk 2."
+  tester = "ctests/proj2/" + name + ".c"
+  make_qemu_args = "CPUS=1"
+  point_value = 10
   timeout = 10
 
 
 import toolspath
 from testing.runtests import main
 main(Xv6Build, [deref_null, deref_0x1000, alloc_155_pages, whenTryingToAllocateAboveUsertop_sbrkShouldFail,
-               whenTryingToReallocateAPageNearUsertop_sbrkShouldSucceed])
+               whenTryingToReallocateAPageNearUsertop_sbrkShouldSucceed,
+               forkLargeMemTest, forkCowTest, forkCowTest2])
 #main(Xv6Build, [shmem_access_communication])
