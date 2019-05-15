@@ -4,6 +4,7 @@
 
 #define USERTOP 0xA0000
 #define PGSIZE 4096
+#define KERNBASE 0x80000000
 
 void
 expectedVersusActualAddress(char* name, uint expected, uint actual)
@@ -39,7 +40,7 @@ main(int argc, char *argv[])
       printf(1, "TEST FAILED\n");
     }
 
-    uint bytesToAlloc2 = 6*PGSIZE;
+    uint bytesToAlloc2 = KERNBASE + PGSIZE - (int)sbrk(0);
     int result = (int)sbrk(bytesToAlloc2);
 
     if(result != -1){
