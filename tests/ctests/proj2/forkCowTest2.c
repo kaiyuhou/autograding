@@ -20,8 +20,9 @@ forktest(void)
       exit();
   }
 
-  if(n == N){
+  if(n != N){
     printf(1, "fork claimed to work N times!\n", N);
+    printf(1, "TEST FAILED\n");
     exit();
   }
 
