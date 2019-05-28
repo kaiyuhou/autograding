@@ -2,7 +2,7 @@
 #include "stat.h"
 #include "user.h"
 
-#define N 1000
+#define N 60
 
 void
 forktest(void)
@@ -10,7 +10,7 @@ forktest(void)
   int n, pid;
 
   printf(1, "fork test\n");
-  char * dummy_mem = (char *) malloc(sizeof(char) * 20 * 1024 * 1024);
+  char * dummy_mem = (char *) malloc(sizeof(char) * 100 * 1024 * 1024);
 
   for(n=0; n<N; n++){
     pid = fork();
