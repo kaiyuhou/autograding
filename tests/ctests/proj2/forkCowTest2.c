@@ -10,6 +10,7 @@ forktest(void)
   int n, pid;
 
   printf(1, "fork test\n");
+  char * dummy_mem = (char *) malloc(sizeof(char) * 20 * 1024 * 1024);
 
   for(n=0; n<N; n++){
     pid = fork();
@@ -37,7 +38,7 @@ forktest(void)
     printf(1, "TEST FAILED\n");
     exit();
   }
-
+  free(dummy_mem);
   printf(1, "TEST PASSED\n");
 }
 
