@@ -2,7 +2,7 @@
 #include "stat.h"
 #include "user.h"
 
-#define N 60
+#define N 30
 
 void
 forktest(void)
@@ -19,6 +19,8 @@ forktest(void)
     if(pid == 0)
       exit();
   }
+
+  printf(1, "Hello, World\n");
 
   if(n != N){
     printf(1, "fork claimed to work N times!\n", N);

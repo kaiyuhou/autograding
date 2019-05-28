@@ -65,11 +65,11 @@ class forkCowTest(Xv6Test):
 
 class forkCowTest2(Xv6Test):
   name = "forkCowTest2"
-  description = "Part 2: Test cpy-on-write folk: fork the parent 1000 times."
+  description = "Part 2: Test cpy-on-write folk: fork the parent 30 times."
   tester = "ctests/proj2/" + name + ".c"
   make_qemu_args = "CPUS=1"
   point_value = 10
-  timeout = 10
+  timeout = 60
 
 class forkCowTest3(Xv6Test):
   name = "forkCowTest3"
